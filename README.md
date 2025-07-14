@@ -37,10 +37,9 @@ Implementada em **Node.js** + **TypeScript** + **Express** + **TypeORM** (banco 
         ```
 
 5. **Rode a aplicação**
-    - Para ambiente de produção (após build):
+    - Para ambiente de produção:
         ```sh
-        npm run build
-        node dist/start.js in/Movielist.csv
+        npm start in/Movielist.csv
         ```
     - Ou para desenvolvimento com ts-node:
         ```sh
