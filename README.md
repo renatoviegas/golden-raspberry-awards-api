@@ -84,7 +84,7 @@ curl 'http://localhost:3000/api/v1/movies?winner=true'
 curl 'http://localhost:3000/api/v1/movies/producers-winners-intervals'
 ```
 
-## Consiferações finais
+## Considerações finais
 
 - **Banco de dados em memória:** Utiliza SQLite via TypeORM, sem dependências externas. Os dados vêm do CSV, tornando testes e reset do ambiente simples.
 - **Arquitetura hexagonal:** Camadas separadas facilitam manutenção, testes e futuras trocas de tecnologia.
