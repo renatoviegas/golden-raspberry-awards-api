@@ -35,10 +35,10 @@ describe('Movies API Integration', () => {
     expect(first.title).toBe("Can't Stop the Music");
   });
 
-  it('deve retornar exatamente 43 filmes vencedores', async () => {
+  it('deve retornar exatamente 42 filmes vencedores', async () => {
     const res = await request(app).get('/api/v1/movies?winner=true');
     expect(res.status).toBe(200);
-    expect(res.body.movies.length).toBe(43);
+    expect(res.body.movies.length).toBe(42);
     expect(res.body.movies.every((movie: any) => movie.winner === true)).toBe(
       true
     );
@@ -54,23 +54,29 @@ describe('Movies API Integration', () => {
 
     expect(Array.isArray(res.body.min)).toBe(true);
     expect(Array.isArray(res.body.max)).toBe(true);
-    expect(res.body.min[0]).toHaveProperty('producer');
-    expect(res.body.min[0]).toHaveProperty('interval');
-    expect(res.body.min[0]).toHaveProperty('previousWin');
-    expect(res.body.min[0]).toHaveProperty('followingWin');
 
-    expect(res.body.min).toContainEqual({
-      producer: 'Bo Derek',
-      interval: 6,
-      previousWin: 1984,
-      followingWin: 1990,
-    });
+    const min = res.body.min[0];
+    expect(min).toHaveProperty('producer');
+    expect(min).toHaveProperty('interval');
+    expect(min).toHaveProperty('previousWin');
+    expect(min).toHaveProperty('followingWin');
 
-    expect(res.body.max).toContainEqual({
-      producer: 'Joel Silver',
-      interval: 10,
-      previousWin: 1990,
-      followingWin: 2000,
-    });
+    expect(res.body.min).toEqual([
+      {
+        producer: 'Joel Silver',
+        interval: 1,
+        previousWin: 1990,
+        followingWin: 1991,
+      },
+    ]);
+
+    expect(res.body.max).toEqual([
+      {
+        producer: 'Matthew Vaughn',
+        interval: 13,
+        previousWin: 2002,
+        followingWin: 2015,
+      },
+    ]);
   });
 });
