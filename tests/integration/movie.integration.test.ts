@@ -5,7 +5,9 @@ import { initializeAppWithCsv } from '../helpers/initTestApp';
 
 describe('Movies API Integration', () => {
   beforeAll(async () => {
-    await initializeAppWithCsv(path.resolve(__dirname, 'data/Movielist.csv'));
+    await initializeAppWithCsv(
+      path.resolve(__dirname, '../../in/movielist.csv')
+    );
   });
 
   it('deve retornar todos os filmes do CSV', async () => {

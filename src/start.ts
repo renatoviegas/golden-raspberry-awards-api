@@ -1,6 +1,9 @@
+import path from 'path';
 import { Application } from './Application';
 
-const csvPath = process.argv[2];
+const DEFAULT_CSV_PATH = path.resolve(__dirname, '../in/movielist.csv');
+
+const csvPath = process.argv[2] || DEFAULT_CSV_PATH;
 
 if (!csvPath) {
   console.error('Erro: Caminho do arquivo CSV não informado!');

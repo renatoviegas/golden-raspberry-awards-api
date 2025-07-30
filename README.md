@@ -27,8 +27,7 @@ Implementada em **Node.js** + **TypeScript** + **Express** + **TypeORM** (banco 
     ```
 
 3. **Prepare o arquivo CSV**
-    - O arquivo dos filmes deve estar no formato especificado (exemplo: `movielist.csv`).
-    - Um exemplo está disponível na pasta `/in/Movielist.csv`.
+    - O arquivo de filmes deve estar disponível na pasta `/in/` e se chamar `movielist.csv`.
 
 4. **(Opcional) Configure variáveis de ambiente**
     - Crie um arquivo `.env` para configurar a porta:
@@ -37,21 +36,21 @@ Implementada em **Node.js** + **TypeScript** + **Express** + **TypeORM** (banco 
         ```
 
 5. **Rode a aplicação**
-    - Para ambiente de produção (após build):
+    - Para execução padrão:
         ```sh
-        npm run build
-        node dist/start.js in/Movielist.csv
+        npm start
         ```
-    - Ou para desenvolvimento com ts-node:
+    - Caso deseje usar outro arquivo, execute:
         ```sh
-        npx ts-node src/start.ts in/Movielist.csv
+        npm start in/meu-arquivo.csv
         ```
-
 ---
 
 ## Como rodar os testes de integração
 
-> Os testes de integração garantem que os endpoints da API funcionam corretamente e retornam os dados esperados, usando um banco de dados em memória e um arquivo CSV de mock.
+> Os testes de integração garantem que os endpoints da API retornam os dados exatos do CSV, usando banco de dados em memória.
+> O csv utilizado nos testes é o mesmo que precisa ser informado para execução principal. 
+
 
 1. **Execute todos os testes:**
     ```sh
@@ -62,9 +61,6 @@ Implementada em **Node.js** + **TypeScript** + **Express** + **TypeORM** (banco 
     ```sh
     npm run test:coverage
     ```
-
-- Não é necessário subir o servidor manualmente para rodar os testes, pois eles importam e inicializam a aplicação automaticamente com um CSV de teste.
-
 ---
 
 ## Endpoints disponíveis
